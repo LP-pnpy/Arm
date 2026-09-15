@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<robot name="my_robot">
+
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.4 0.4 0.1" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.4 0.4 0.1" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.5" radius="0.1"/>
+            </geometry>
+            <origin xyz="0 0 0.25" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.5" radius="0.1"/>
+            </geometry>
+            <origin xyz="0 0 0.25" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link1">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.5" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.5" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link2">
+        <visual>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link3">
+        <visual>
+            <geometry>
+                <cylinder length="1.0" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.5" rpy="0 0 0" />
+            <material name="grey" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="1.0" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.5" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link4">
+        <visual>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link5">
+        <visual>
+            <geometry>
+                <box size="0.05 0.05 0.1" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="grey"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.05 0.05 0.1" />
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <link name="shoulder_link6">
+        <visual>
+            <geometry>
+                <cylinder length="0.1" radius="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+            <material name="blue" />
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder length="0.1" radius="0.01"/>
+            </geometry>
+            <origin xyz="0 0 0.05" rpy="0 0 0" />
+        </collision>
+    </link>
+
+    <joint name="joint1" type="revolute">
+        <parent link="base_link" />
+        <child link="shoulder_link" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+
+    <joint name="joint2" type="revolute">
+        <parent link="shoulder_link" />
+        <child link="shoulder_link1" />
+        <origin xyz="0 0 0.5" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+
+    <joint name="joint3" type="revolute">
+        <parent link="shoulder_link1" />
+        <child link="shoulder_link2" />
+        <origin xyz="0 0 1.0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+
+    <joint name="joint4" type="revolute">
+        <parent link="shoulder_link2" />
+        <child link="shoulder_link3" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="1000.0" velocity="1.0" lower="-3.14" upper="3.14" />
+    </joint>
+    
+    <joint name="joint5" type="revolute">
+        <parent link="shoulder_link3" />
+        <child link="shoulder_link4" />
+        <origin xyz="0 0 1.0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="1000.0" velocity="1.0" lower="-1.57" upper="1.57" />
+    </joint>
+
+    <joint name="joint6" type="continuous">
+        <parent link="shoulder_link4" />
+        <child link="shoulder_link5" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <joint name="joint7" type="fixed">
+        <parent link="shoulder_link5" />
+        <child link="shoulder_link6" />
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+    </joint>
+</robot>
