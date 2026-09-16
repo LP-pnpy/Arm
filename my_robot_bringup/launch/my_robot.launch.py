@@ -16,7 +16,7 @@ def generate_launch_description():
     urdf_path = PathJoinSubstitution([pkg_share_desc, 'urdf', 'my_robot.urdf.xacro'])
     rviz_config_path = PathJoinSubstitution([pkg_share_desc, 'rviz', 'arm.rviz'])
     controllers_yaml = PathJoinSubstitution([pkg_share_bringup, 'config', 'ros2_controllers.yaml'])
-    
+
     # 2. 解析 URDF (Xacro 转 URDF)
     robot_description_content = Command(['xacro ', urdf_path])
     robot_description = {'robot_description': ParameterValue(robot_description_content, value_type=str)}
